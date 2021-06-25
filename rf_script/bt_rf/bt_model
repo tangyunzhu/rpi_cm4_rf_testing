@@ -1,0 +1,6 @@
+sudo hcitool cmd 03 03 
+sudo hcitool cmd 04 09 
+sudo hcitool cmd 01 01 00 8B 9E 01 00 
+sudo hcitool cmd 0x03 0x0005 0x02 0x00 0x02 
+sudo hcitool cmd 0x03 0x001A 0x03
+sudo hcitool cmd 0x06 0x0003 
