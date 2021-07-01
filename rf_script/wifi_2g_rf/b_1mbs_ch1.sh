@@ -1,3 +1,4 @@
+#!/bin/bash
 wl -i wlan0 out
 wl -i wlan0 down
 wl -i wlan0 frameburst 1
