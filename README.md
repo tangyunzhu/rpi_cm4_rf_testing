@@ -4,7 +4,7 @@ these file used for Raspberry Pi CM4 RF testing
 /rf_setting/model_wifi.sh       --> used to config CM4 to wifi model  
 /rf_setting/model_rf_conduct.sh --> used to config CM4 RF power transmit from UFL connector  
 /rf_setting/model_rf_rse.sh     --> used to config CM4 RF power transmit from antenna  
--------------------------------------------------------------------  
+  
 We have creat the necessary script for RF testing.  
 you can excute the script by ./filename.  
 If you want to turn the channel and power, you can use the flowing scripts.  
