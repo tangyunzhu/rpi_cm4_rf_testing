@@ -43,7 +43,7 @@
 #arm_freq=800
 
 # Uncomment some or all of these to enable the optional hardware interfaces
-#dtparam=i2c_arm=on
+dtparam=i2c_arm=on
 #dtparam=i2s=on
 #dtparam=spi=on
 
@@ -64,3 +64,11 @@ max_framebuffers=2
 [all]
 #dtoverlay=vc4-fkms-v3d
 dtparam=ant1
+enable_uart=1
+dtoverlay=dwc2,dr_mode=host
+disable_splash=1
+ignore_lcd=1
+dtoverlay=vc4-kms-v3d-pi4
+dtoverlay=i2c3,pins_4_5
+gpio=13=pu
+dtoverlay=reTerminal
