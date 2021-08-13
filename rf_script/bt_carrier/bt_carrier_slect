@@ -50,6 +50,8 @@ fi
 #read pkt
 echo -n INPUT_CHANNEL[0x00:2402MHz - 0x27:2441MHz - 0x2e:2448MHz - 0x4e:2480MHz]:
 read ch
+let "ch = $ch + 2"
+
 
 if [ $trx = "tx" ]; then
 #echo -n INPUT_POWER[0x00:0dBm,0x01:-4dBm,0x02:-8dBm,0x03:-12dBm,0x04:-16dBm,0x05:-20dBm,0x06:-24dBm,0x07:-28dBm,0x08:specify power in dBn, 0x09: specify power Table index]
