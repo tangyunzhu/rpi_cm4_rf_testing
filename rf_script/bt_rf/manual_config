@@ -1,0 +1,59 @@
+#!/bin/bash
+sudo ifconfig wlan0 down >> /dev/null
+sudo hciconfig hci0 up
+sudo hcitool -i hci0 cmd 0x03 0x003 >> /dev/null		# HCI_Reset 
+sudo hcitool -i hci0 cmd 0x03 0x01A 0x034  >> /dev/null  	# HCI_Set_Event_Filter 
+sudo hcitool -i hci0 cmd 0x06 0x003 >> /dev/null		# HCI_Enable_Device_Under_Test_Mode 
+
+BDADDR=`sudo hcitool -i hci0 dev | nawk '/hci0/{print $2}'`
+echo $BDADDR
+
+freq=0x00
+modulation=0x00
+logical=0x00
+pkt_type=0x00
+tx_pwr=0x00
+
+
+echo "0x00:2402,0x27:2441,0x4E:2480"
+echo -n input_frequency[]:
+read freq
+
+echo ""
+echo "0x1:0x00 8bit,0x2:0xFF 8bit,0x3:0xAA 8bit,0x09:0xF0 8bit,0x4:PRBS9"
+echo -n input_modulation_type[]:
+read modulation
+
+echo ""
+echo "0x0:ACL_EDR,0x1:ACL_Basic,0x2:eSCO_EDR,0x3:eSOC Basic,0x4:SCO_Basic"
+echo -n input_logical_channel[]:
+read logical
+
+echo ""
+echo "0x0:NULL,0x1:POLL,0x2:FHS,0x3:DM1,0x4:DH1/2-DH1,0x5:HV1,0x6:HV2/2-EV3"
+echo "0x7:HV3/EV3/3-EV3,0x8:DV/3-DH1,0x9:AUX1/PS,0xA:DM3/2-DH3,0xB:DH3/3-DH3"
+echo "0xC:EV4/2-EV5,0xD:EV5/3-EV5,0xE:DM5/2-DH5,0xF:DH5/3-DH5"
+echo -n input_BB_packet_type[]:
+read pkt_type
+
+echo ""
+echo "0x0:0dBm,0x1:-4dBm,0x2:-8dBm,0x3:-12dBm,0x4:-16dBm,0x5:-20dBm"
+echo "0x6:-24dBm,0x7:-28dBm,0x08:Specify power in dBm,0x09:Special power table index"
+echo -n input_power_level[]:
+read tx_pwr
+
+echo ""
+echo "-------------- Input summary ------------"
+echo "Frequency:      "$freq
+echo "Modulation:     "$modulation
+echo "Logical Channel:"$logical
+echo "Packet Type:    "$pkt_type
+echo "Transmit Power: "$tx_pwr
+echo "-----------------------------------------"
+
+
+sudo hcitool cmd 3f 51 ac 1f 12 A1 43 43 01 $freq $modulation $logical $pkt_type 53 01 $tx_pwr 00 00
+
+echo -n INPUT_STOP[Enter]:
+read stop
+sudo hciconfig hci0 down 			        # command to disable the HCI
