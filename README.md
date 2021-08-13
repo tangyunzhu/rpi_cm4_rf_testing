@@ -28,6 +28,7 @@ scripts save position: cm4_rf/rf_script/bt_carrier
 ./ble_carrier 0x00 0x00   #BLE 2402M carrier  
 ./ble_carrier 0x1B 0x00   #BLE 2441M carrier  
 ./ble_carrier 0x30 0x00   #BLE 2480M carrier  
+
   
 BT carrier commond  
 ./bt_carrier  channel pwr    
@@ -37,5 +38,7 @@ BT carrier commond
  ./bt_carrier 0x1B 0x00  #BT 2441M carrier  
  ./bt_carrier 0x30 0x00  #BT 2480M carrier  
 
-
-
+  
+/rf_script/bt_rf/manual_config  
+this file will be used to test all BT model. the opertor will need to select the parament when testing.  
+And input the hex data. finally, the scripts will use your select data.  
