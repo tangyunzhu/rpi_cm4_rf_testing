@@ -1,0 +1,3 @@
+#!/bin/bash
+#sudo hciconfig hci0 down
+sudo hcitool -i hci0 cmd 0x03 0x003
