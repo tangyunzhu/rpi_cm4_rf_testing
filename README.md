@@ -20,15 +20,22 @@ first: channel
 second: power level  
 such as the following command:  
 ./test_b_1mbs 1 70  
-
-----------------------------------------------------  
-BT&BLE carrier commond
+  
+----------------------------------------------------    
+BLE carrier commond  
 scripts save position: cm4_rf/rf_script/bt_carrier  
-./ble_carrier 0x00 0x00   #1:channel, 2:power level  
-./bt_carrier  channel pwr modulation_type
- channel: 0x00 - 0x4e
- pwr: 0x00 - 0x07
- modulation_type:
+./ble_carrier 0x00 0x00   #channel, 2:power level   
+./ble_carrier 0x00 0x00   #BLE 2402M carrier  
+./ble_carrier 0x1B 0x00   #BLE 2441M carrier  
+./ble_carrier 0x30 0x00   #BLE 2480M carrier  
+  
+BT carrier commond  
+./bt_carrier  channel pwr    
+ channel: 0x00 - 0x4e  
+ pwr: 0x00 - 0x07  
+ ./bt_carrier 0x00 0x00  #BT 2402M carrier  
+ ./bt_carrier 0x1B 0x00  #BT 2441M carrier  
+ ./bt_carrier 0x30 0x00  #BT 2480M carrier  
 
 
 
