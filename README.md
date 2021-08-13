@@ -25,7 +25,10 @@ such as the following command:
 BT&BLE carrier commond
 scripts save position: cm4_rf/rf_script/bt_carrier  
 ./ble_carrier 0x00 0x00   #1:channel, 2:power level  
-./bt_carrier  
+./bt_carrier  channel pwr modulation_type
+ channel: 0x00 - 0x4e
+ pwr: 0x00 - 0x07
+ modulation_type:
 
 
 
